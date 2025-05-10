@@ -176,6 +176,6 @@ io.on('connection', (socket) => {
 initBlocks();
 startGameLoop();
 
-server.listen(443, () => {
-  console.log('Server running on port 443');
+server.listen(8080, () => {
+  console.log('Server running on port 8080');
 });
