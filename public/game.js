@@ -49,10 +49,14 @@ function draw() {
 }
 
 canvas.addEventListener('mousemove', (e) => {
-  const rect = canvas.getBoundingClientRect();
-  const y = e.clientY - rect.top - 50;
-  const side = e.clientX < canvas.width / 2 ? 'left' : 'right';
-  socket.emit('paddleMove', { side, y: Math.max(0, Math.min(500, y)) });
-});
+    const rect = canvas.getBoundingClientRect();
+    const y = e.clientY - rect.top - 50;
+    const canvasX = e.clientX - rect.left; // Get X position relative to canvas
+    const side = canvasX < canvas.width / 2 ? 'left' : 'right';
+    socket.emit('paddleMove', { 
+      side, 
+      y: Math.max(0, Math.min(500, y)) 
+    });
+  });
 
 gameLoop();
